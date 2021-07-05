@@ -1,0 +1,124 @@
+.navigation {
+    display: flex;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    justify-content: space-between;
+    padding: 3rem 5%;
+    align-items: center;
+
+    &__logo {
+        max-height: 4rem;
+    }
+
+    &__list {
+        display: flex;
+
+        &-items:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    @include responsive(tab-land) {
+        flex-direction: row;
+    }
+    justify-content: space-between;
+    padding: 2rem 5% 15rem;
+    align-items: center;
+
+    &__intro {
+        order: 1;
+        text-align: center;
+        @include responsive(tab-land) {
+            padding: 0 5% 3rem 0;
+            order: 0;
+            text-align: left;
+        }
+
+        .form {
+            @include responsive(tab-land) {
+                flex-direction: row;
+                align-items: stretch;
+            }
+        }
+    }
+
+    &__image {
+        margin-bottom: 4rem;
+        @include responsive(tab-land) {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.footer {
+    background: $primary-dark-blue;
+    color: $light-grayish-blue;
+    padding: 5rem 5% 10rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-row-gap: 4rem;
+    @media only screen and (min-width: 462px) {
+        justify-items: center;
+    }
+
+    &__logo {
+        grid-column: 1 / -1;
+        color: $light-grayish-blue;
+        justify-self: start;
+    }
+
+    &__contact {
+        justify-self: start;
+
+        & > * {
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            .contact {
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    &__social {
+        place-self: start center;
+        display: flex;
+
+        & > * {
+            margin-right: 2rem;
+            position: relative;
+
+            &::before {
+                content: "";
+                display: block;
+                background: transparent;
+                height: 2.5rem;
+                width: 2.5rem;
+                border-radius: 50%;
+                border: 1px solid $light-grayish-blue;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+
+            &:hover {
+                & > * {
+                    color: $accent-cyan;
+                }
+
+                &::before {
+                    border: 1px solid $accent-cyan;
+                }
+            }
+        }
+    }
+}
